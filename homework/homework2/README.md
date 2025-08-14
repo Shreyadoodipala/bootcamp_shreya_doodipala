@@ -1,0 +1,3 @@
+# Tooling Setup
+Tooling setup is important to provide a clear and consistent structure, which makes it easier to run and change configurations in different environments. It separates configuration information, thus the code doesn't need to change. This also excludes sensitive information in version control.  
+Documenting dependencies, environment settings and variables allows other developers to easily configure, setup and reproduce the code.
