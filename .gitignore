@@ -1,5 +1,6 @@
 # Ignore local class materials
 class_materials/
+class_notes/
 # Ignore Python cache files
 __pycache__/
 *.pyc
