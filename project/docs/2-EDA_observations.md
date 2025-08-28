@@ -10,3 +10,4 @@
 - FICO and revolve utilized have a strong negative correlation.
 - Interest rate and revolve utilized have a moderate positive correlation.
 - Installment and log annual income have a moderate positive correlation.
+- None of the features are strongly correlated to default.
