@@ -86,3 +86,24 @@ def build_preprocessor(X_train, categorical_cols, skew_thresholds=(1.0, 3.0)):
     }
     
     return preprocessor, col_groups
+
+def preprocess_data(X_train, X_test, categorical_cols, skew_thresholds=(1.0, 3.0)):
+    # Build preprocessor + col groups
+    preprocessor, col_groups = build_preprocessor(X_train, categorical_cols, skew_thresholds)
+
+    # Fit on train
+    preprocessor.fit(X_train)
+
+    # Transform train & test
+    X_train_preproc = preprocessor.transform(X_train)
+    X_test_preproc = preprocessor.transform(X_test)
+
+    # Clean feature names
+    feature_names = preprocessor.get_feature_names_out()
+    clean_names = [name.split("__")[-1] for name in feature_names]
+
+    # Convert to DataFrames
+    X_train_df = pd.DataFrame(X_train_preproc, columns=clean_names, index=X_train.index)
+    X_test_df = pd.DataFrame(X_test_preproc, columns=clean_names, index=X_test.index)
+
+    return X_train_df, X_test_df, preprocessor, col_groups
